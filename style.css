@@ -1,0 +1,104 @@
+/* Base Styles */
+body, html { margin: 0; padding: 0; background: #000; overflow: hidden; font-family: 'VT323', monospace; color: #ffdef2; transition: background 1s ease; }
+#star-canvas { position: fixed; inset: 0; z-index: -2; }
+.scene { position: absolute; inset: 0; display: none; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+.scene.active { display: flex; }
+
+/* Intro */
+.intro-container { border: 2px solid rgba(255, 255, 255, 0.2); background: rgba(0, 0, 0, 0.6); padding: 40px; border-radius: 20px; box-shadow: 0 0 30px rgba(255, 182, 193, 0.2); margin-bottom: 30px; backdrop-filter: blur(5px); }
+.magical-text { font-family: 'Cinzel', serif; font-size: 5rem; color: #fff; text-shadow: 0 0 20px #fff, 0 0 40px #ff69b4; }
+.magical-subtext { font-family: 'Cinzel', serif; font-size: 2rem; color: #ffb6c1; letter-spacing: 5px; margin-bottom: 20px; text-transform: uppercase; }
+.quote-box { font-style: italic; font-size: 1.5rem; color: #ffd700; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 15px; }
+.pixel-text { font-size: 4rem; text-shadow: 4px 4px #000; margin-bottom: 20px; z-index: 10; color: #ffdef2; }
+.game-btn { background: #ffb6c1; border: 3px solid #fff; padding: 15px 30px; font-size: 2rem; cursor: pointer; font-family: 'VT323'; margin-top: 20px; box-shadow: 0 0 10px #ff69b4; color: #333; }
+.game-btn:hover { transform: scale(1.05); }
+
+/* HEAVY PURPLE ANIME ROCKET */
+#rocket-container {
+    position: fixed; 
+    bottom: -700px; 
+    left: 50%; 
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center;
+    z-index: 200;
+}
+
+.anime-rocket { width: 180px; height: 300px; position: relative; filter: drop-shadow(0 0 20px rgba(214, 51, 132, 0.6)); }
+.body-tube { width: 100px; height: 180px; background: #f0f0f0; border: 4px solid #222; border-radius: 20px; position: absolute; left: 40px; z-index: 5; box-shadow: inset 10px 0 20px rgba(0,0,0,0.1); }
+.cone { width: 100px; height: 90px; background: #d63384; border: 4px solid #222; border-bottom: none; border-radius: 50% 50% 50% 50% / 80% 80% 20% 20%; position: absolute; top: -85px; left: 40px; z-index: 4; }
+.booster { width: 40px; height: 140px; background: #e0e0e0; border: 4px solid #222; border-radius: 20px; position: absolute; bottom: 0; z-index: 3; border-top: 10px solid #d63384; }
+.left-booster { left: 0; } .right-booster { right: 0; }
+.fin { position: absolute; bottom: 20px; width: 50px; height: 80px; background: #d63384; border: 4px solid #222; z-index: 1; }
+.left { left: -20px; border-radius: 100% 0 0 20%; transform: rotate(-10deg); }
+.right { right: -20px; border-radius: 0 100% 20% 0; transform: rotate(10deg); }
+.window-frame { width: 60px; height: 60px; background: #333; border-radius: 50%; position: absolute; top: 40px; left: 20px; border: 3px solid #ccc; }
+.window-glass { width: 100%; height: 100%; background: #00d2ff; border-radius: 50%; box-shadow: inset 5px 5px 15px rgba(255,255,255,0.8); }
+
+/* FIX: Flame centered correctly */
+.fire-stream { 
+    position: absolute; 
+    bottom: -150px; 
+    left: 90px; /* Center point of the 180px wide rocket container */
+    transform: translateX(-50%); /* Shift back by half its own width to center */
+    width: 80px; 
+    height: 0px; 
+    background: linear-gradient(to bottom, #fff, #ffff00, #ff5722, transparent); 
+    border-radius: 0 0 50% 50%; 
+    z-index: 0; 
+    filter: blur(5px); 
+    transition: height 0.5s ease-out; 
+}
+#rocket-container.engine-start .fire-stream { height: 250px; animation: flicker 0.1s infinite alternate; }
+#rocket-container.engine-start .anime-rocket { animation: rumble 0.1s infinite; }
+@keyframes flicker { from { opacity: 0.8; transform: translateX(-50%) scaleX(0.9); } to { opacity: 1; transform: translateX(-50%) scaleX(1.1); } }
+@keyframes rumble { 0% { transform: translate(0,0); } 100% { transform: translate(2px, 2px); } }
+
+/* TEXT & MENU */
+.centered-msg { 
+    position: fixed; top: 50%; left: 50%; 
+    transform: translate(-50%, -50%); 
+    z-index: 200; width: 100%; text-align: center; 
+}
+/* SLOW FADE IN */
+.glow { color: #fff; text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff00ff; font-size: 5rem; opacity: 0; animation: fadeInSlow 4s forwards; }
+@keyframes fadeInSlow { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
+/* CORNER MENU */
+.corner-menu {
+    position: fixed; bottom: 20px; right: 20px;
+    display: flex; gap: 10px; z-index: 300;
+}
+.small-btn { font-size: 1.2rem; padding: 10px 15px; background: rgba(0,0,0,0.7); border: 2px solid #ff69b4; color: #fff; }
+
+/* MISC */
+#fireworks-canvas { position: fixed; top: 0; left: 0; z-index: 20; pointer-events: none; }
+.balloon { position: absolute; width: 70px; height: 90px; border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%; background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(255,255,255,0) 20%), var(--color); box-shadow: inset -5px -5px 10px rgba(0,0,0,0.3), 0 0 15px var(--color); animation: floatUp 10s linear forwards; z-index: 5; }
+.balloon::before { content: ''; position: absolute; bottom: -30px; left: 50%; width: 2px; height: 30px; background: rgba(255,255,255,0.7); transform: translateX(-50%); }
+@keyframes floatUp { from { bottom: -150px; } to { bottom: 120vh; } }
+.sticky-title { position: absolute; top: 20px; width: 100%; text-align: center; background: rgba(0,0,0,0.5); padding: 10px; z-index: 20; pointer-events: none; }
+.zig-zag-wrapper { width: 100%; height: 100vh; overflow-y: auto; scroll-behavior: smooth; position: relative; padding-top: 150px; }
+.zig-zag-wrapper::-webkit-scrollbar { display: none; }
+.zig-zag-track { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 150px; padding-bottom: 50px; }
+.memory-item { display: flex; align-items: center; gap: 30px; opacity: 0; animation: fadeInView 1s forwards; }
+@keyframes fadeInView { to { opacity: 1; } }
+.mem-pic { width: 250px; height: 250px; object-fit: cover; border-radius: 15px; border: 4px solid #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.5); transform: rotate(var(--rot)); transition: transform 0.3s; }
+.mem-pic:hover { transform: scale(1.1) rotate(0deg); }
+.mem-note { font-family: 'Gloria Hallelujah', cursive; color: #0ff; font-size: 1.8rem; text-shadow: 2px 2px #000; background: rgba(0,0,0,0.6); padding: 10px 15px; border-radius: 5px; max-width: 200px; }
+.memory-item:nth-child(odd) { flex-direction: row; margin-right: 40%; }
+.memory-item:nth-child(even) { flex-direction: row-reverse; margin-left: 40%; }
+.riddle-section { width: 100%; display: flex; justify-content: center; margin-top: 100px; margin-bottom: 200px; }
+.riddle-container { background: rgba(0,0,0,0.9); padding: 30px; border: 4px solid #ff69b4; border-radius: 15px; z-index: 20; box-shadow: 0 0 30px #ff69b4; }
+input { background: #333; border: 2px solid #fff; color: #fff; font-family: 'VT323'; font-size: 1.5rem; padding: 5px; text-align: center; width: 200px; }
+#cake-wrapper { position: absolute; right: -600px; transition: right 2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+#cake-wrapper.slide-in { right: 50%; transform: translateX(50%); }
+.cake-structure { position: relative; display: flex; flex-direction: column; align-items: center; }
+.layer { border-radius: 10px; border: 2px solid #fff; }
+.layer-top { width: 120px; height: 50px; background: #ffc0cb; border-bottom: 5px solid #ff69b4; z-index: 3; }
+.layer-middle { width: 180px; height: 60px; background: #ffb6c1; border-bottom: 5px solid #ff1493; z-index: 2; margin-top: -5px; }
+.layer-bottom { width: 240px; height: 70px; background: #ff69b4; border-bottom: 5px solid #c71585; z-index: 1; margin-top: -5px; }
+.candle { width: 12px; height: 40px; background: #fff; margin-bottom: -5px; z-index: 4; }
+.flame { width: 20px; height: 30px; background: orange; border-radius: 50% 50% 20% 20%; position: absolute; top: -35px; left: 50%; transform: translateX(-50%); box-shadow: 0 0 20px orange; animation: flicker 0.1s infinite alternate; z-index: 5; cursor: pointer; }
+@keyframes flicker { from { transform: translateX(-50%) scale(1); } to { transform: translateX(-50%) scale(1.15); } }
+.hidden { display: none !important; }
+#music-player { position: fixed; top: 20px; right: 20px; z-index: 1000; background: rgba(255,182,193,0.8); padding: 5px; border-radius: 10px; }
+.music-btn { background: transparent; border: none; font-size: 1.5rem; cursor: pointer; }

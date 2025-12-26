@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Rowwwit ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Cinzel:wght@400;700&family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <canvas id="star-canvas"></canvas>
+    
+    <div id="music-player" class="hidden">
+        <button class="music-btn" onclick="togglePlay()">⏯</button>
+        <button class="music-btn" onclick="nextSong()">⏭</button>
+    </div>
+    <audio id="bg-music" loop></audio>
+
+    <div id="app">
+        <section id="scene-1" class="scene active">
+            <div class="intro-container">
+                <div id="live-clock" class="magical-text">00:00:00</div>
+                <div id="live-date" class="magical-subtext">DECEMBER 17, 2025</div>
+                <div class="quote-box"><p>"The universe danced the day you were born."</p></div>
+            </div>
+            <button class="game-btn pulse-btn" onclick="startExperience()">Enter The Magic</button>
+        </section>
+
+        <section id="scene-2" class="scene">
+            <div id="balloon-container"></div>
+            <h1 class="pixel-text">Magic is in the air...</h1>
+        </section>
+
+        <section id="scene-3" class="scene">
+            <div id="cake-wrapper" class="off-screen-right">
+                <div class="cake-structure">
+                    <div class="flame" id="candle-flame"></div>
+                    <div class="candle"></div>
+                    <div class="layer layer-top"></div>
+                    <div class="layer layer-middle"></div>
+                    <div class="layer layer-bottom"></div>
+                </div>
+            </div>
+            <h1 id="countdown-display" class="pixel-text hidden">3</h1>
+            <h1 id="cake-msg" class="pixel-text hidden">Make a wish...</h1>
+        </section>
+
+        <section id="scene-4" class="scene">
+            <div id="neon-doodles"></div>
+            <h1 class="pixel-text sticky-title">Scroll Down Memory Lane...</h1>
+            <div class="zig-zag-wrapper" id="scroll-container">
+                <div class="zig-zag-track" id="memory-track"></div>
+                <div class="riddle-section">
+                    <div class="riddle-container">
+                        <h1 class="pixel-text" style="font-size: 2.5rem;">Unlock the Secret</h1>
+                        <p style="color:#ffb6c1; font-family: 'Gloria Hallelujah'; font-size: 1.5rem;">("Rowwwit is a ....?")</p>
+                        <input type="text" id="riddle-answer" placeholder="type here...">
+                        <button class="game-btn" onclick="checkRiddle()">Unlock</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="scene-5" class="scene">
+            <div id="letter-content">
+                <div class="letter-paper">
+                    <p>My Dearest Rohit,</p>
+                    <p>Happy Birthday! I am glad it is you.</p>
+                       <p>I am glad I get to do life with you; the good days, the bad moods, the boring
+                        days, all of it.</p>
+                        <p>You matter to me more than you probably realise, and I don’t say that enough.</p>
+                        <p>I hope this year is kinder to you. And I hope you know I’m here, not just today, but always.</p>
+                        <p>Thank you for being you, for being my person, my rock, my home.</p>
+                        <p>I wish we could celebrate this day together, but that's okay.</p>
+                        <p>This is the only thing I get to cook for you for the time being, I hope it makes you happy.</p>
+                        <p>I love you endlessly.</p>
+                </div>
+                <button class="game-btn" onclick="goToScene(6)">One Final Surprise</button>
+            </div>
+        </section>
+
+        <section id="scene-6" class="scene">
+            <div id="final-inputs">
+                <h1 class="pixel-text">Send a wish to the stars.</h1>
+                <textarea id="wish-input" placeholder="Write it here..."></textarea>
+                <button class="game-btn" onclick="startFinale()">LAUNCH</button>
+            </div>
+            
+            <div id="rocket-container" class="hidden">
+                <div class="anime-rocket">
+                    <div class="cone"></div>
+                    <div class="body-tube">
+                        <div class="window-frame"><div class="window-glass"></div></div>
+                    </div>
+                    <div class="booster left-booster"></div>
+                    <div class="booster right-booster"></div>
+                    <div class="fin left"></div>
+                    <div class="fin right"></div>
+                    <div class="fire-stream"></div>
+                </div>
+            </div>
+            
+            <canvas id="fireworks-canvas"></canvas>
+            
+            <div id="final-text-container" class="hidden centered-msg">
+                <h1 class="pixel-text glow">I'm so glad that you're here :)</h1>
+            </div>
+
+            <div id="final-options" class="hidden corner-menu">
+                <button class="game-btn small-btn" onclick="stayWatching()">Watch Fireworks</button>
+                <button class="game-btn small-btn" onclick="location.reload()">Celebrate Again</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
